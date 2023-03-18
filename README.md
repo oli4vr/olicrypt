@@ -11,4 +11,4 @@
 <br/>
 <p>Example use : encrypt and decrypt a file</p>
 <pre>$ olicrypt -r 8 mysecretkey &lt;testfile &gt;testfile.enc
-$ olicrypt -d -r 8 mysecretkey <testfile.enc >testfile.dec</pre>
+$ olicrypt -d -r 8 mysecretkey &lt;testfile.enc &gt;testfile.dec</pre>
