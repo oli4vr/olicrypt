@@ -146,7 +146,7 @@ void obscure_fw(unsigned char * str,int len,unsigned char phase) {
  uint64_t * bp;
  unsigned char * tt=ttable[phase];
  unsigned char offset=tt[127]&7;
- if (len<8) return;
+ if (len<9) return;
  for(sc=offset;sc<max;sc+=8) {
     bp=(uint64_t *)(str+sc);
     *bp=((*bp)<<(tt[sc>>4]&63))|((*bp)>>(64-(tt[sc>>4]&63)));
@@ -163,7 +163,7 @@ void obscure_bw(unsigned char * str,int len,unsigned char phase) {
  uint64_t * bp;
  unsigned char * tt=ttable[phase];
  unsigned char offset=tt[127]&7;
- if (len<8) return;
+ if (len<9) return;
  bp=(uint64_t *)(str+(max-1));
  *bp=((*bp)>>(tt[1]&63))|((*bp)<<(64-(tt[1]&63)));
  bp=(uint64_t *)(str);
