@@ -2,15 +2,8 @@
  * by Olivier Van Rompuy
  *
  * I wrote this program to learn some basics about encryption.
- * I did optimize the code to get some descent performance.
  *
- * This reads 1k at a time from standard input, encrypts it and 
- * writes the resulting encrypted data on standard output.
- *
- * An optional parameter -i can be used to set the amount of rounds.
- * More rounds results in more complex encryption at the price of performance.
- *
-* Per iteration/round the following is done to the data :
+ * Per iteration/round the following is done to the data :
  * - 1st round only : Starting InvertXOR with 8192bit key
  * - Byte substitution (different translation tables per round)
  * - Leftway bitwise rotation *A (per 64bit words)
