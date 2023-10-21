@@ -1,4 +1,5 @@
-/* Basic stdin/stdout encryption 
+/* Personal encryption experiment
+ * Simple stdin to stdout usage
  * by Olivier Van Rompuy
  *
  * I wrote this program to learn some basics about encryption.
@@ -21,6 +22,7 @@
 #define BUFFER_SIZE 65536
 
 int main(int argc, char ** argv) {
+ crypttale ct;
  unsigned char buffer[BUFFER_SIZE];
  unsigned char *keystr;
  unsigned char *opt;
@@ -28,7 +30,7 @@ int main(int argc, char ** argv) {
  unsigned char mode=1;
  unsigned char *cmd=argv[0];
  unsigned char badsyntax=0;
- int rnds=4;
+ int rnds=8;
  argc--;
  argv++;
 
@@ -67,14 +69,14 @@ int main(int argc, char ** argv) {
  }
 
  if (rnds > 256) rnds=256;
- init_encrypt(argv[0],rnds);
+ init_encrypt(&ct,argv[0],rnds);
  
  rsize=fread(buffer,1,BUFFER_SIZE,stdin);
  while (rsize>0) {
   if (mode) {
-   encrypt_data(buffer,rsize);
+   encrypt_data(&ct,buffer,rsize);
   } else {
-   decrypt_data(buffer,rsize);
+   decrypt_data(&ct,buffer,rsize);
   }
   wsize=fwrite(buffer,1,rsize,stdout);
   if (wsize<rsize) {fprintf(stderr,"Write Error : Elements Read %d Writen %d\n",rsize,wsize);exit(1);}
