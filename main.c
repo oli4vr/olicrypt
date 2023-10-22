@@ -69,6 +69,7 @@ int main(int argc, char ** argv) {
  }
 
  if (rnds > 256) rnds=256;
+ fprintf(stderr,"%s %d\n",argv[0],rnds);
  init_encrypt(&ct,argv[0],rnds);
  
  rsize=fread(buffer,1,BUFFER_SIZE,stdin);
